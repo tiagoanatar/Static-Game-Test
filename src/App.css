@@ -1,0 +1,48 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* game grid */
+
+.map-cell {
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid black;
+  transition: 0.3s;
+}
+
+.map-cell:hover {
+  transform: scale(1.2);
+}
+
+.map-cell.grass {
+  background-image: url('src/assets/tiles/grass.jpg');
+}
+.map-cell.desert {
+  background-image: url('src/assets/tiles/desert.jpg');
+}
+
+.map-resource {
+  width: 90%;
+  height: 90%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.map-resource.forest {
+  background-image: url('src/assets/tiles/forest.jpg');
+}
+
+.map-resource.r-mountain-crystal {
+  background-image: url('src/assets/tiles/r-mountain-crystal.png');
+}
+
+.map-resource.r-mountain-iron {
+  background-image: url('src/assets/tiles/r-mountain-iron.png');
+}
