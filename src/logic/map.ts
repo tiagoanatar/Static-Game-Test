@@ -1,6 +1,6 @@
 type Terrain = 'grass' | 'desert'
 type Resource = 'r-mountain-crystal' | 'r-mountain-iron' 
-type NonResource = '' | 'forest'
+type NonResource = 'none' | 'forest'
 
 export interface Tile {
   id: string;
@@ -32,11 +32,22 @@ const getRandomResource = ():Resource => {
 
 // Get random non resource
 const getRandomNonResource = ():NonResource => {
-  const resourceList: NonResource[] = ['', 'forest']
+  const resourceList: NonResource[] = ['none', 'forest']
   if (getRandomBoolean(0.1)) {
     return resourceList[getRandomNumber(resourceList.length-2)] 
   }
   return resourceList[0]
+}
+
+// Player positions
+const setPlayerPosition = (y:number, x:number) => {
+  if (y === 1 && x === 2){
+    return 1
+  }
+  if (y === 10 && x === 10){
+    return 2
+  }
+  return 0
 }
 
 // Multiples of 12 size
@@ -50,12 +61,14 @@ export const feedTileSet = (size: number) => {
         // Random set
         const resource = getRandomBoolean(0.1)
         const terrain = getRandomTerrain()
-        let aboveTerrain
+        let aboveTerrain: Resource | NonResource
 
         if (resource){
           aboveTerrain = getRandomResource() 
-        } else {
+        } else if(terrain !== 'desert') {
           aboveTerrain = getRandomNonResource()
+        } else {
+          aboveTerrain = 'none';
         }
 
         firstGameSet.push({
@@ -65,7 +78,7 @@ export const feedTileSet = (size: number) => {
           aboveTerrain: aboveTerrain,
           y: y,
           x: x,
-          playerControl: 0
+          playerControl: setPlayerPosition(y,x)
         })
       }
     }

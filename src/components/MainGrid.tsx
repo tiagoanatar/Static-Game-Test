@@ -1,24 +1,32 @@
-import { Grid, Box, Flex } from '@mantine/core'
-import { Tile } from '../logic/map.ts'
+import { Grid, Box, Flex } from "@mantine/core";
+import { GridItem } from "../components/GridItem";
+import { Tile } from "../logic/map.ts";
 
-type Props = {
-    data: Tile[];
-  };
+interface Props {
+  data: Tile[];
+}
 
-export const MainGrid = ({data}: Props) => {
+export const MainGrid = ({ data }: Props) => {
   return (
     <Grid gutter={0}>
-      {data.map((item, index) => {
+      {data.map((item) => {
         return (
-            <Grid.Col key={item.id} span={1}>
-                <Flex className={`map-cell ${item.terrain}`} align="center" justify="center">
-                    <Box className={`map-resource ${item.aboveTerrain}`}>
-                        {index}
-                    </Box>
-                </Flex>
-            </Grid.Col>
-        )
+          <Grid.Col key={item.id} span={1}>
+            <Flex
+              className={`map-cell ${item.terrain}`}
+              align="center"
+              justify="center"
+            >
+              <GridItem
+                className={`map-resource ${
+                  item.playerControl > 0 ? "none" : item.aboveTerrain
+                }`}
+                item={item}
+              />
+            </Flex>
+          </Grid.Col>
+        );
       })}
     </Grid>
   );
-}
+};

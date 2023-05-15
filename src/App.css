@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -45,4 +45,31 @@
 
 .map-resource.r-mountain-iron {
   background-image: url('src/assets/tiles/r-mountain-iron.png');
+}
+
+/* player base */
+
+.player-base-type {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.player-base-type.castle-1 {
+  background-image: url('src/assets/tiles/base-castle-1.png');
+}
+
+.player-base-type.castle-2 {
+  background-image: url('src/assets/tiles/base-castle-2.png');
+}
+
+.player-base-type.farm-1 {
+  background-image: url('src/assets/tiles/base-farm-1.png');
+}
+
+.player-base-type.farm-2 {
+  background-image: url('src/assets/tiles/base-farm-2.png');
 }
